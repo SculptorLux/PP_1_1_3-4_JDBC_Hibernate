@@ -13,27 +13,14 @@ public class Util {
     private final static String PASSWORD = "Super268413975!";
 
 
-    public static void getConnection() throws SQLException {
-
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-            if (!connection.isClosed()) {
-
-                System.out.println("We are connected!");
-
-            }
-
+    public static Connection getConnection() throws SQLException {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("Connection to database");
         } catch (SQLException e) {
-
-            System.out.println("there is no connection... Exception!");
-
+            System.out.println("Error of connection" + e.getMessage());
         }
-    }
-
-    public static Statement createStatement() throws SQLException {
-
-        Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-        return connection.createStatement();
-
+        return connection;
     }
 }
