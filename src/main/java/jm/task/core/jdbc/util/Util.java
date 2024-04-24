@@ -46,7 +46,9 @@ public class Util {
 
             //add already created hibernate file to properties in current thread
             try {
-                properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("src.main.resources.hibernate.properties"));
+                properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(
+                        "src.main.resources.hibernate.properties")
+                );
             } catch (IOException e) {
                 e.printStackTrace();
             }
