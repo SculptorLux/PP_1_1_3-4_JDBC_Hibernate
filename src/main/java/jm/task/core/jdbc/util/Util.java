@@ -33,11 +33,11 @@ public class Util {
     }
 
     public static class HbFactoryConfiguration {
-        private static HbFactoryConfiguration hbFactoryConfiguration;
+        public static HbFactoryConfiguration hbFactoryConfiguration;
         private SessionFactory sessionFactory;
         //create session factory
 
-        private HbFactoryConfiguration() {
+        public HbFactoryConfiguration() {
             //add configuration
             Configuration configuration = new Configuration();
 
@@ -47,7 +47,7 @@ public class Util {
             //add already created hibernate file to properties in current thread
             try {
                 properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(
-                        "src.main.resources.hibernate.properties")
+                        "hibernate.properties")
                 );
             } catch (IOException e) {
                 e.printStackTrace();
